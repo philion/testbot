@@ -2,5 +2,6 @@ aiohttp
 aiosqlite
 discord.py
 tabulate
+gspread
 
 dpytest
