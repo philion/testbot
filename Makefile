@@ -4,6 +4,8 @@ VENV = .venv
 PYTHON = $(VENV)/bin/python3
 PIP = $(VENV)/bin/pip
 
+all: $(VENV)/bin/activate
+
 run: $(VENV)/bin/activate
 	$(PYTHON) bot.py
 
@@ -12,7 +14,8 @@ $(VENV)/bin/activate: requirements.txt
 	$(PIP) install --upgrade pip
 	$(PIP) install -r requirements.txt
 
-all: $(VENV)/bin/activate
+test: $(VENV)/bin/activate
+	$(PYTHON) -m pytest
 
 clean:
 	rm -rf __pycache__

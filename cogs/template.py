@@ -1,9 +1,5 @@
 """"
-Copyright © Krypton 2019-2023 - https://github.com/kkrypt0nn (https://krypton.ninja)
-Description:
-🐍 A simple template to start to code your own and personalized discord bot in Python programming language.
-
-Version: 5.5.0
+Copyright Krypton 2019-2023 https://github.com/kkrypt0nn
 """
 
 from discord.ext import commands
@@ -20,7 +16,7 @@ class Template(commands.Cog, name="template"):
     # Here you can just add your own commands, you'll always need to provide "self" as first parameter.
 
     @commands.hybrid_command(
-        name="testcommand",
+        name="reverseit",
         description="This is a testing command that does nothing.",
     )
     # This will only allow non-blacklisted members to execute the command

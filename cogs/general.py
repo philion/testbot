@@ -23,7 +23,7 @@ class General(commands.Cog, name="general"):
         self.bot = bot
 
     @commands.hybrid_command(
-        name="help", description="List all commands the bot has loaded."
+        name="hep", description="List all commands the bot has loaded."
     )
     @checks.not_blacklisted()
     async def help(self, context: Context) -> None:
@@ -104,7 +104,7 @@ class General(commands.Cog, name="general"):
         await context.send(embed=embed)
 
     @commands.hybrid_command(
-        name="ping",
+        name="png",
         description="Check if the bot is alive.",
     )
     @checks.not_blacklisted()
@@ -208,37 +208,12 @@ class General(commands.Cog, name="general"):
         await context.send(embed=embed)
 
     @commands.hybrid_command(
-        name="bitcoin",
-        description="Get the current price of bitcoin.",
+        name="reverse",
+        description="Reverse the text of the message",
     )
     @checks.not_blacklisted()
-    async def bitcoin(self, context: Context) -> None:
-        """
-        Get the current price of bitcoin.
-
-        :param context: The hybrid command context.
-        """
-        # This will prevent your bot from stopping everything when doing a web request - see: https://discordpy.readthedocs.io/en/stable/faq.html#how-do-i-make-a-web-request
-        async with aiohttp.ClientSession() as session:
-            async with session.get(
-                "https://api.coindesk.com/v1/bpi/currentprice/BTC.json"
-            ) as request:
-                if request.status == 200:
-                    data = await request.json(
-                        content_type="application/javascript"
-                    )  # For some reason the returned content is of type JavaScript
-                    embed = discord.Embed(
-                        title="Bitcoin price",
-                        description=f"The current price is {data['bpi']['USD']['rate']} :dollar:",
-                        color=0x9C84EF,
-                    )
-                else:
-                    embed = discord.Embed(
-                        title="Error!",
-                        description="There is something wrong with the API, please try again later",
-                        color=0xE02B2B,
-                    )
-                await context.send(embed=embed)
+    async def reverse(self, context: Context, *, arg: str) -> None:
+        await context.send(arg[::-1])
 
 
 async def setup(bot):
