@@ -1,5 +1,6 @@
 aiohttp
 aiosqlite
 discord.py
+tabulate
 
 dpytest
